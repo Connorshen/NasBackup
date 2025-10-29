@@ -1,0 +1,3481 @@
+[
+    {
+        "id": "228db05206cb80ad",
+        "type": "tab",
+        "label": "每日概览汇报",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ae61b308b6be0d51",
+        "type": "tab",
+        "label": "鱼缸日报",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f4682b9ef068259f",
+        "type": "tab",
+        "label": "电费报告",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9ed0cc432bf05d11",
+        "type": "tab",
+        "label": "汽车日报",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7933ca710dd957bf",
+        "type": "tab",
+        "label": "接收门口摄像头事件",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d1b744409d05f8f4",
+        "type": "tab",
+        "label": "定时备份",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f688cba6a004cf62",
+        "type": "subflow",
+        "name": "发送企业微信",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 200,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "d2e0df99c37b50d1"
+                    }
+                ]
+            }
+        ],
+        "out": [],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "a745574bf8e5f18b",
+        "type": "subflow",
+        "name": "发送图片",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 80,
+                "y": 200,
+                "wires": [
+                    {
+                        "id": "0befc76e407a015b"
+                    },
+                    {
+                        "id": "e03fd4b61cd638d4"
+                    }
+                ]
+            }
+        ],
+        "out": [],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "82f9dbd4ee3be2c7",
+        "type": "subflow",
+        "name": "上传GIF文件",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 240,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "c05a18daf52cb472"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 500,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "c05a18daf52cb472",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "ba5849c6c7752ebe",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 5,
+        "addon": false,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true,
+        "heartbeat": false,
+        "heartbeatInterval": 30,
+        "areaSelector": "friendlyName",
+        "deviceSelector": "friendlyName",
+        "entitySelector": "friendlyName",
+        "statusSeparator": ": ",
+        "statusYear": "hidden",
+        "statusMonth": "short",
+        "statusDay": "numeric",
+        "statusHourCycle": "default",
+        "statusTimeFormat": "h:m",
+        "enableGlobalContextStore": false
+    },
+    {
+        "id": "23a12b1512944eb0",
+        "type": "mqtt-broker",
+        "name": "NAS",
+        "broker": "192.168.2.100",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "acffdb4938535fe3",
+        "type": "venv-config",
+        "venvname": "pyenv",
+        "version": "default"
+    },
+    {
+        "id": "a1a5e2542d880830",
+        "type": "amaps-configurator",
+        "name": "track-location"
+    },
+    {
+        "id": "8205ee9d4179d831",
+        "type": "git-nodes-config",
+        "name": "",
+        "git": "git@github.com:Connorshen/NodeRedBackup.git"
+    },
+    {
+        "id": "b37063a7d73f619d",
+        "type": "http request",
+        "z": "f688cba6a004cf62",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 520,
+        "y": 100,
+        "wires": [
+            [
+                "ce966082c591432e"
+            ]
+        ]
+    },
+    {
+        "id": "d2e0df99c37b50d1",
+        "type": "function",
+        "z": "f688cba6a004cf62",
+        "name": "机器人地址",
+        "func": "msg.url=\"https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=3fedf5ea-7fb5-4cce-b787-ae16d153c8f5&debug=1\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 100,
+        "wires": [
+            [
+                "b37063a7d73f619d"
+            ]
+        ]
+    },
+    {
+        "id": "ce966082c591432e",
+        "type": "debug",
+        "z": "f688cba6a004cf62",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "fd51696446c8bbd1",
+        "type": "function",
+        "z": "a745574bf8e5f18b",
+        "name": "拼接图片数据包",
+        "func": "msg.payload = {\n    \"msgtype\": \"image\",\n    \"image\": {\n        \"base64\": msg.payload.image,\n        \"md5\": msg.payload.md5\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 200,
+        "wires": [
+            [
+                "a259958317ed97b4"
+            ]
+        ]
+    },
+    {
+        "id": "0befc76e407a015b",
+        "type": "md5",
+        "z": "a745574bf8e5f18b",
+        "name": "",
+        "fieldToHash": "payload",
+        "fieldTypeToHash": "msg",
+        "hashField": "md5",
+        "hashFieldType": "msg",
+        "x": 230,
+        "y": 160,
+        "wires": [
+            [
+                "6e4074275c2ba4d3"
+            ]
+        ]
+    },
+    {
+        "id": "e03fd4b61cd638d4",
+        "type": "base64",
+        "z": "a745574bf8e5f18b",
+        "name": "",
+        "action": "",
+        "property": "payload",
+        "x": 240,
+        "y": 260,
+        "wires": [
+            [
+                "791c603a3fb425b8"
+            ]
+        ]
+    },
+    {
+        "id": "6e4074275c2ba4d3",
+        "type": "function",
+        "z": "a745574bf8e5f18b",
+        "name": "兼容数据",
+        "func": "msg.payload = msg.md5\nmsg.topic = \"md5\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 160,
+        "wires": [
+            [
+                "2723677d0087f974"
+            ]
+        ]
+    },
+    {
+        "id": "791c603a3fb425b8",
+        "type": "function",
+        "z": "a745574bf8e5f18b",
+        "name": "兼容数据",
+        "func": "msg.topic=\"image\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 260,
+        "wires": [
+            [
+                "2723677d0087f974"
+            ]
+        ]
+    },
+    {
+        "id": "2723677d0087f974",
+        "type": "join",
+        "z": "a745574bf8e5f18b",
+        "name": "合并数据",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 590,
+        "y": 200,
+        "wires": [
+            [
+                "fd51696446c8bbd1"
+            ]
+        ]
+    },
+    {
+        "id": "a259958317ed97b4",
+        "type": "subflow:f688cba6a004cf62",
+        "z": "a745574bf8e5f18b",
+        "name": "",
+        "x": 1020,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "c05a18daf52cb472",
+        "type": "venv",
+        "z": "82f9dbd4ee3be2c7",
+        "venvconfig": "acffdb4938535fe3",
+        "name": "上传文件",
+        "code": "import requests\nkey = \"3fedf5ea-7fb5-4cce-b787-ae16d153c8f5\"\nfile_url = msg[\"payload\"]\nfile_data = requests.get(file_url)\nupload_data = {'file': (\"事件预览.gif\",file_data.content)}\nupload_res = requests.post(f\"https://qyapi.weixin.qq.com/cgi-bin/webhook/upload_media?key={key}&type=file\", files=upload_data)\nmsg['payload']=upload_res.json()[\"media_id\"]\nprint(msg['payload'])",
+        "continuous": false,
+        "x": 380,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "860dd5f2afb990c5",
+        "type": "inject",
+        "z": "228db05206cb80ad",
+        "name": "定时任务8点",
+        "props": [],
+        "repeat": "",
+        "crontab": "00 08 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "ef6fb9fa98e7da26",
+                "22687c2e15cb1853",
+                "e4ecc5d7d0a9fcf1",
+                "c5ae47a6402b494a"
+            ]
+        ]
+    },
+    {
+        "id": "ef6fb9fa98e7da26",
+        "type": "api-current-state",
+        "z": "228db05206cb80ad",
+        "name": "门电量",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.loock_cn_1039771501_t1_battery_level_p_4_1",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 350,
+        "y": 80,
+        "wires": [
+            [
+                "df8706674b158dce"
+            ]
+        ]
+    },
+    {
+        "id": "716a4588e2d92ece",
+        "type": "subflow:f688cba6a004cf62",
+        "z": "228db05206cb80ad",
+        "name": "",
+        "x": 1190,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "22687c2e15cb1853",
+        "type": "api-current-state",
+        "z": "228db05206cb80ad",
+        "name": "客厅",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "climate.qdhkl_cn_proxy_622286062_0101_ac",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 350,
+        "y": 140,
+        "wires": [
+            [
+                "08e772b427ab5f82"
+            ]
+        ]
+    },
+    {
+        "id": "08e772b427ab5f82",
+        "type": "function",
+        "z": "228db05206cb80ad",
+        "name": "获取温度",
+        "func": "msg.payload = msg.payload.attributes.current_temperature\nmsg.topic=\"current_temperature\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 140,
+        "wires": [
+            [
+                "654500bacc41eaad"
+            ]
+        ]
+    },
+    {
+        "id": "df8706674b158dce",
+        "type": "function",
+        "z": "228db05206cb80ad",
+        "name": "获取电量",
+        "func": "msg.payload = Number(msg.payload)\nmsg.topic=\"door_power\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 80,
+        "wires": [
+            [
+                "654500bacc41eaad"
+            ]
+        ]
+    },
+    {
+        "id": "654500bacc41eaad",
+        "type": "join",
+        "z": "228db05206cb80ad",
+        "name": "合并",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": false,
+        "timeout": "",
+        "count": "4",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 690,
+        "y": 120,
+        "wires": [
+            [
+                "57488b6cb28eb433"
+            ]
+        ]
+    },
+    {
+        "id": "e4ecc5d7d0a9fcf1",
+        "type": "api-current-state",
+        "z": "228db05206cb80ad",
+        "name": "天气",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "weather.hangzhou",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 350,
+        "y": 240,
+        "wires": [
+            [
+                "d41482d2f228c8d6"
+            ]
+        ]
+    },
+    {
+        "id": "d41482d2f228c8d6",
+        "type": "function",
+        "z": "228db05206cb80ad",
+        "name": "获取温度",
+        "func": "msg.payload = msg.payload.attributes\nmsg.topic=\"weather\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 240,
+        "wires": [
+            [
+                "654500bacc41eaad"
+            ]
+        ]
+    },
+    {
+        "id": "57488b6cb28eb433",
+        "type": "function",
+        "z": "228db05206cb80ad",
+        "name": "生成总结",
+        "func": "// 假设输入对象存储在 msg.payload 中\nconst data = msg.payload;\n\n// 生成 Markdown 内容\nconst markdown = `\n报告大帅，这是今日家庭智能设备总结\n\n## 设备状态\n- **门电量**：${data.door_power}%\n- **冰箱冷冻室**：${data.fridge_temperature}°C\n\n## 室内环境\n- **卧室室温**：${data.current_temperature}°C\n\n## 今日天气\n- **最低温度**：${data.weather.templow}°C\n- **最高温度**：${data.weather.temphigh}°C\n- **湿度**：${data.weather.humidity}%\n- **气压**：${data.weather.pressure}${data.weather.pressure_unit}\n- **风力**：${data.weather.wind_speed}${data.weather.wind_speed_unit}（${data.weather.wind_bearing}）\n- **能见度**：${data.weather.visibility}${data.weather.visibility_unit}\n- **天气状况**：${data.weather.condition_desc}\n\n`;\n\n// 将生成的 Markdown 内容赋值给 msg.payload\nmsg.payload = markdown;\n\n// 返回修改后的 msg 对象\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 120,
+        "wires": [
+            [
+                "8708655ef03dc23f"
+            ]
+        ]
+    },
+    {
+        "id": "8708655ef03dc23f",
+        "type": "function",
+        "z": "228db05206cb80ad",
+        "name": "填充模板",
+        "func": "const wx_msg={\n    \"msgtype\": \"markdown\",\n    \"markdown\":{\"content\":msg.payload} \n}\nmsg.payload=wx_msg\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 120,
+        "wires": [
+            [
+                "716a4588e2d92ece"
+            ]
+        ]
+    },
+    {
+        "id": "c5ae47a6402b494a",
+        "type": "api-current-state",
+        "z": "228db05206cb80ad",
+        "name": "冰箱冷冻室",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.ac8226157d6f_freezertemperaturec",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 370,
+        "y": 340,
+        "wires": [
+            [
+                "ed24763854fabeec"
+            ]
+        ]
+    },
+    {
+        "id": "ed24763854fabeec",
+        "type": "function",
+        "z": "228db05206cb80ad",
+        "name": "获取温度",
+        "func": "msg.payload = msg.payload\nmsg.topic=\"fridge_temperature\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 340,
+        "wires": [
+            [
+                "654500bacc41eaad"
+            ]
+        ]
+    },
+    {
+        "id": "8d9388307acb19f5",
+        "type": "inject",
+        "z": "ae61b308b6be0d51",
+        "name": "定时任务",
+        "props": [],
+        "repeat": "",
+        "crontab": "01 08 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 100,
+        "y": 100,
+        "wires": [
+            [
+                "960a33696638b426",
+                "74d00eb82b11ddd9",
+                "33c7183445c2809f",
+                "7f6e632b44675e1a"
+            ]
+        ]
+    },
+    {
+        "id": "960a33696638b426",
+        "type": "api-current-state",
+        "z": "ae61b308b6be0d51",
+        "name": "上次喂食时间",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "event.hfjh_cn_942854168_m100_feed_result_e_6_1",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 280,
+        "y": 100,
+        "wires": [
+            [
+                "b09792077d73d38e"
+            ]
+        ]
+    },
+    {
+        "id": "74d00eb82b11ddd9",
+        "type": "api-current-state",
+        "z": "ae61b308b6be0d51",
+        "name": "生化滤芯剩余寿命",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.hfjh_cn_942854168_m100_filter_life_level_p_11_1",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 290,
+        "y": 180,
+        "wires": [
+            [
+                "13293810050d9afd"
+            ]
+        ]
+    },
+    {
+        "id": "33c7183445c2809f",
+        "type": "api-current-state",
+        "z": "ae61b308b6be0d51",
+        "name": "物理滤芯剩余寿命",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.hfjh_cn_942854168_m100_filter_life_level_p_10_1",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 290,
+        "y": 260,
+        "wires": [
+            [
+                "f856399a30be8c99"
+            ]
+        ]
+    },
+    {
+        "id": "7f6e632b44675e1a",
+        "type": "api-current-state",
+        "z": "ae61b308b6be0d51",
+        "name": "鱼缸温度",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.hfjh_cn_942854168_m100_temperature_p_2_4",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 260,
+        "y": 360,
+        "wires": [
+            [
+                "8ad4e0a2213787de"
+            ]
+        ]
+    },
+    {
+        "id": "245de123c361bae7",
+        "type": "function",
+        "z": "ae61b308b6be0d51",
+        "name": "获取鱼缸截图",
+        "func": "msg.url = \"http://192.168.2.100:15000/api/fish_camera/latest.jpg\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 440,
+        "wires": [
+            [
+                "5a351481d87ec0e6"
+            ]
+        ]
+    },
+    {
+        "id": "b09792077d73d38e",
+        "type": "function",
+        "z": "ae61b308b6be0d51",
+        "name": "格式化",
+        "func": "msg.topic=\"lastFeedTime\"\nconst lastDate = new Date(msg.payload)\nmsg.payload = lastDate.toLocaleString()\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 100,
+        "wires": [
+            [
+                "ddfe8c46bace238b"
+            ]
+        ]
+    },
+    {
+        "id": "13293810050d9afd",
+        "type": "function",
+        "z": "ae61b308b6be0d51",
+        "name": "格式化",
+        "func": "msg.payload = `${msg.payload}%`\nmsg.topic=\"bioLife\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 180,
+        "wires": [
+            [
+                "ddfe8c46bace238b"
+            ]
+        ]
+    },
+    {
+        "id": "f856399a30be8c99",
+        "type": "function",
+        "z": "ae61b308b6be0d51",
+        "name": "格式化",
+        "func": "msg.topic=\"physicalLife\"\nmsg.payload = `${msg.payload}%`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 260,
+        "wires": [
+            [
+                "ddfe8c46bace238b"
+            ]
+        ]
+    },
+    {
+        "id": "8ad4e0a2213787de",
+        "type": "function",
+        "z": "ae61b308b6be0d51",
+        "name": "格式化",
+        "func": "msg.topic=\"fishCanTemp\"\nmsg.payload = `${msg.payload}°C`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 360,
+        "wires": [
+            [
+                "ddfe8c46bace238b"
+            ]
+        ]
+    },
+    {
+        "id": "ddfe8c46bace238b",
+        "type": "join",
+        "z": "ae61b308b6be0d51",
+        "name": "合并",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": false,
+        "timeout": "",
+        "count": "4",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 710,
+        "y": 240,
+        "wires": [
+            [
+                "f7483de7dc368919"
+            ]
+        ]
+    },
+    {
+        "id": "f7483de7dc368919",
+        "type": "function",
+        "z": "ae61b308b6be0d51",
+        "name": "生成总结",
+        "func": "// 假设输入对象存储在 msg.payload 中\nconst data = msg.payload;\n\n// 生成 Markdown 内容\nconst markdown = `\n报告大帅，这是今日鱼缸设备总结\n\n## 鱼缸状态\n- **上次喂食**：${data.lastFeedTime}\n- **物理滤芯剩余寿命**：${data.bioLife}\n- **生化滤芯剩余寿命**：${data.physicalLife}\n- **鱼缸温度**：${data.fishCanTemp}\n`;\n\n// 将生成的 Markdown 内容赋值给 msg.payload\nmsg.payload = markdown;\n\n// 返回修改后的 msg 对象\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 240,
+        "wires": [
+            [
+                "ae9e65fb62c07dab"
+            ]
+        ]
+    },
+    {
+        "id": "879659820d94e30b",
+        "type": "subflow:a745574bf8e5f18b",
+        "z": "ae61b308b6be0d51",
+        "name": "",
+        "x": 640,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "5a351481d87ec0e6",
+        "type": "http request",
+        "z": "ae61b308b6be0d51",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 460,
+        "y": 440,
+        "wires": [
+            [
+                "879659820d94e30b"
+            ]
+        ]
+    },
+    {
+        "id": "ae9e65fb62c07dab",
+        "type": "function",
+        "z": "ae61b308b6be0d51",
+        "name": "填充模板",
+        "func": "const wx_msg={\n    \"msgtype\": \"markdown\",\n    \"markdown\":{\"content\":msg.payload} \n}\nmsg.payload=wx_msg\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 240,
+        "wires": [
+            [
+                "d2909a3c41a4051a"
+            ]
+        ]
+    },
+    {
+        "id": "d2909a3c41a4051a",
+        "type": "subflow:f688cba6a004cf62",
+        "z": "ae61b308b6be0d51",
+        "name": "",
+        "x": 1220,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "e6566ccc258fada9",
+        "type": "inject",
+        "z": "ae61b308b6be0d51",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 460,
+        "wires": [
+            [
+                "245de123c361bae7"
+            ]
+        ]
+    },
+    {
+        "id": "919790e8afb62c6c",
+        "type": "subflow:f688cba6a004cf62",
+        "z": "f4682b9ef068259f",
+        "name": "",
+        "x": 1400,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "f47dee9546a77520",
+        "type": "api-current-state",
+        "z": "f4682b9ef068259f",
+        "name": "车位最近一天用电量",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.last_electricity_usage_2518",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 440,
+        "y": 420,
+        "wires": [
+            [
+                "aeb37f074a38f69e"
+            ]
+        ]
+    },
+    {
+        "id": "82d7d7b3b21610c3",
+        "type": "api-current-state",
+        "z": "f4682b9ef068259f",
+        "name": "车位上月用电量",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.month_electricity_charge_2518",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 420,
+        "y": 480,
+        "wires": [
+            [
+                "de980d20b58d1080"
+            ]
+        ]
+    },
+    {
+        "id": "1d980c7d8eca4ee0",
+        "type": "api-current-state",
+        "z": "f4682b9ef068259f",
+        "name": "车位上月电费",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.month_electricity_usage_2518",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 420,
+        "y": 540,
+        "wires": [
+            [
+                "78a07b0a404e21aa"
+            ]
+        ]
+    },
+    {
+        "id": "1d34c139265a74ef",
+        "type": "api-current-state",
+        "z": "f4682b9ef068259f",
+        "name": "车位今年用电量",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.yearly_electricity_charge_2518",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 420,
+        "y": 600,
+        "wires": [
+            [
+                "ee0c99d9710e9ce7"
+            ]
+        ]
+    },
+    {
+        "id": "af60f4f03ac6687b",
+        "type": "api-current-state",
+        "z": "f4682b9ef068259f",
+        "name": "车位今年电费",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.yearly_electricity_usage_2518",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 420,
+        "y": 660,
+        "wires": [
+            [
+                "9e38441a737f81db"
+            ]
+        ]
+    },
+    {
+        "id": "6d4abe6b05ac27f2",
+        "type": "api-current-state",
+        "z": "f4682b9ef068259f",
+        "name": "住宅最近一天用电量",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.last_electricity_usage_8106",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 440,
+        "y": 60,
+        "wires": [
+            [
+                "84f7775e21c208b4"
+            ]
+        ]
+    },
+    {
+        "id": "b8112ff017e1b07c",
+        "type": "api-current-state",
+        "z": "f4682b9ef068259f",
+        "name": "住宅上月用电量",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.month_electricity_charge_8106",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 420,
+        "y": 120,
+        "wires": [
+            [
+                "2577d1de1529f801"
+            ]
+        ]
+    },
+    {
+        "id": "652c44c1bcdc1eae",
+        "type": "api-current-state",
+        "z": "f4682b9ef068259f",
+        "name": "住宅上月电费",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.month_electricity_usage_8106",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 420,
+        "y": 180,
+        "wires": [
+            [
+                "202d0cedf8294f70"
+            ]
+        ]
+    },
+    {
+        "id": "8c9c87c314716b44",
+        "type": "api-current-state",
+        "z": "f4682b9ef068259f",
+        "name": "住宅今年用电量",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.yearly_electricity_charge_8106",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 420,
+        "y": 240,
+        "wires": [
+            [
+                "be9b7760d0e9010c"
+            ]
+        ]
+    },
+    {
+        "id": "c74fc6c120f04b2f",
+        "type": "api-current-state",
+        "z": "f4682b9ef068259f",
+        "name": "住宅今年电费",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.yearly_electricity_usage_8106",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 420,
+        "y": 300,
+        "wires": [
+            [
+                "ee75cd5e25baf5c7"
+            ]
+        ]
+    },
+    {
+        "id": "571efacfaa57e352",
+        "type": "inject",
+        "z": "f4682b9ef068259f",
+        "name": "定时任务",
+        "props": [],
+        "repeat": "",
+        "crontab": "02 08 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 140,
+        "y": 280,
+        "wires": [
+            [
+                "6d4abe6b05ac27f2",
+                "b8112ff017e1b07c",
+                "652c44c1bcdc1eae",
+                "8c9c87c314716b44",
+                "c74fc6c120f04b2f",
+                "f47dee9546a77520",
+                "82d7d7b3b21610c3",
+                "1d980c7d8eca4ee0",
+                "1d34c139265a74ef",
+                "af60f4f03ac6687b"
+            ]
+        ]
+    },
+    {
+        "id": "84f7775e21c208b4",
+        "type": "function",
+        "z": "f4682b9ef068259f",
+        "name": "格式化",
+        "func": "msg.topic =\"last_electricity_usage_8106\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 60,
+        "wires": [
+            [
+                "b002ad789798def6"
+            ]
+        ]
+    },
+    {
+        "id": "2577d1de1529f801",
+        "type": "function",
+        "z": "f4682b9ef068259f",
+        "name": "格式化",
+        "func": "msg.topic =\"month_electricity_charge_8106\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 120,
+        "wires": [
+            [
+                "b002ad789798def6"
+            ]
+        ]
+    },
+    {
+        "id": "202d0cedf8294f70",
+        "type": "function",
+        "z": "f4682b9ef068259f",
+        "name": "格式化",
+        "func": "msg.topic =\"month_electricity_usage_8106\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 180,
+        "wires": [
+            [
+                "b002ad789798def6"
+            ]
+        ]
+    },
+    {
+        "id": "be9b7760d0e9010c",
+        "type": "function",
+        "z": "f4682b9ef068259f",
+        "name": "格式化",
+        "func": "msg.topic =\"yearly_electricity_charge_8106\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 240,
+        "wires": [
+            [
+                "b002ad789798def6"
+            ]
+        ]
+    },
+    {
+        "id": "ee75cd5e25baf5c7",
+        "type": "function",
+        "z": "f4682b9ef068259f",
+        "name": "格式化",
+        "func": "msg.topic =\"yearly_electricity_usage_8106\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 300,
+        "wires": [
+            [
+                "b002ad789798def6"
+            ]
+        ]
+    },
+    {
+        "id": "b002ad789798def6",
+        "type": "join",
+        "z": "f4682b9ef068259f",
+        "name": "合并",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": false,
+        "timeout": "",
+        "count": "10",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 880,
+        "y": 340,
+        "wires": [
+            [
+                "1afea8748c858ad5"
+            ]
+        ]
+    },
+    {
+        "id": "aeb37f074a38f69e",
+        "type": "function",
+        "z": "f4682b9ef068259f",
+        "name": "格式化",
+        "func": "msg.topic =\"last_electricity_usage_2518\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 420,
+        "wires": [
+            [
+                "b002ad789798def6"
+            ]
+        ]
+    },
+    {
+        "id": "de980d20b58d1080",
+        "type": "function",
+        "z": "f4682b9ef068259f",
+        "name": "格式化",
+        "func": "msg.topic =\"month_electricity_charge_2518\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 480,
+        "wires": [
+            [
+                "b002ad789798def6"
+            ]
+        ]
+    },
+    {
+        "id": "78a07b0a404e21aa",
+        "type": "function",
+        "z": "f4682b9ef068259f",
+        "name": "格式化",
+        "func": "msg.topic =\"month_electricity_usage_2518\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 540,
+        "wires": [
+            [
+                "b002ad789798def6"
+            ]
+        ]
+    },
+    {
+        "id": "ee0c99d9710e9ce7",
+        "type": "function",
+        "z": "f4682b9ef068259f",
+        "name": "格式化",
+        "func": "msg.topic =\"yearly_electricity_charge_2518\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 600,
+        "wires": [
+            [
+                "b002ad789798def6"
+            ]
+        ]
+    },
+    {
+        "id": "9e38441a737f81db",
+        "type": "function",
+        "z": "f4682b9ef068259f",
+        "name": "格式化",
+        "func": "msg.topic =\"yearly_electricity_usage_2518\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 660,
+        "wires": [
+            [
+                "b002ad789798def6"
+            ]
+        ]
+    },
+    {
+        "id": "1afea8748c858ad5",
+        "type": "function",
+        "z": "f4682b9ef068259f",
+        "name": "生成总结",
+        "func": "// 假设输入对象存储在 msg.payload 中\nconst data = msg.payload;\n\n// 生成 Markdown 内容\nconst markdown = `\n报告大帅，这是今日用电总结\n\n## 住宅\n- **昨天用电量**：${data.last_electricity_usage_8106}度\n- **上月用电量**：${data.month_electricity_usage_8106}度\n- **上月电费**：${data.month_electricity_charge_8106}元\n- **今年用电量**：${data.yearly_electricity_usage_8106}度\n- **今年电费**：${data.yearly_electricity_charge_8106}元\n\n## 地下车库\n- **昨天用电量**：${data.last_electricity_usage_2518}度\n- **上月用电量**：${data.month_electricity_usage_2518}度\n- **上月电费**：${data.month_electricity_charge_2518}元\n- **今年用电量**：${data.yearly_electricity_usage_2518}度\n- **今年电费**：${data.yearly_electricity_charge_2518}元\n`;\n\n// 将生成的 Markdown 内容赋值给 msg.payload\nmsg.payload = markdown;\n\n// 返回修改后的 msg 对象\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 340,
+        "wires": [
+            [
+                "52e18c2cc1455e95"
+            ]
+        ]
+    },
+    {
+        "id": "52e18c2cc1455e95",
+        "type": "function",
+        "z": "f4682b9ef068259f",
+        "name": "填充模板",
+        "func": "const wx_msg={\n    \"msgtype\": \"markdown\",\n    \"markdown\":{\"content\":msg.payload} \n}\nmsg.payload=wx_msg\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1220,
+        "y": 340,
+        "wires": [
+            [
+                "919790e8afb62c6c"
+            ]
+        ]
+    },
+    {
+        "id": "bcc3efadbfc2c5d7",
+        "type": "subflow:f688cba6a004cf62",
+        "z": "9ed0cc432bf05d11",
+        "name": "",
+        "x": 1540,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "2c4f4f5d1dc12dc7",
+        "type": "api-current-state",
+        "z": "9ed0cc432bf05d11",
+        "name": "充电枪是否已插入",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "binary_sensor.tesla_plugged_in",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 530,
+        "y": 380,
+        "wires": [
+            [
+                "66dc311f0d2c71c7"
+            ]
+        ]
+    },
+    {
+        "id": "19551fe866e61047",
+        "type": "api-current-state",
+        "z": "9ed0cc432bf05d11",
+        "name": "窗户是否已打开",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "binary_sensor.tesla_windows_open",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 520,
+        "y": 440,
+        "wires": [
+            [
+                "bff9ad589b6e9e8a"
+            ]
+        ]
+    },
+    {
+        "id": "505200d2202d9e49",
+        "type": "api-current-state",
+        "z": "9ed0cc432bf05d11",
+        "name": "门是否已打开",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "binary_sensor.tesla_doors_open",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 520,
+        "y": 500,
+        "wires": [
+            [
+                "f6901fd993e94c53"
+            ]
+        ]
+    },
+    {
+        "id": "9e934a19dbf3a9aa",
+        "type": "api-current-state",
+        "z": "9ed0cc432bf05d11",
+        "name": "后备箱是否已打开",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "binary_sensor.tesla_trunk_open",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 530,
+        "y": 560,
+        "wires": [
+            [
+                "32c3a12c9add0c25"
+            ]
+        ]
+    },
+    {
+        "id": "1b8930e812b3e4cd",
+        "type": "api-current-state",
+        "z": "9ed0cc432bf05d11",
+        "name": "前备箱是否已打开",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "binary_sensor.tesla_frunk_open",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 530,
+        "y": 620,
+        "wires": [
+            [
+                "d9de7d69c745ae69"
+            ]
+        ]
+    },
+    {
+        "id": "ea9a4b42c4cdb99c",
+        "type": "api-current-state",
+        "z": "9ed0cc432bf05d11",
+        "name": "内部温度",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.tesla_inside_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 500,
+        "y": 80,
+        "wires": [
+            [
+                "b906c31c56dac8ef"
+            ]
+        ]
+    },
+    {
+        "id": "d4687d618aa6d3e3",
+        "type": "api-current-state",
+        "z": "9ed0cc432bf05d11",
+        "name": "外部温度",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.tesla_outside_temp",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 500,
+        "y": 140,
+        "wires": [
+            [
+                "65ecb0404951c829"
+            ]
+        ]
+    },
+    {
+        "id": "b83ccc7b854b382c",
+        "type": "api-current-state",
+        "z": "9ed0cc432bf05d11",
+        "name": "里程数",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.tesla_odometer",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 490,
+        "y": 200,
+        "wires": [
+            [
+                "43c305d48d111d29"
+            ]
+        ]
+    },
+    {
+        "id": "644131c2dd4521c6",
+        "type": "api-current-state",
+        "z": "9ed0cc432bf05d11",
+        "name": "可用电量",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.tesla_usable_battery_level",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 500,
+        "y": 260,
+        "wires": [
+            [
+                "745d705124733494"
+            ]
+        ]
+    },
+    {
+        "id": "95e9a671872911e7",
+        "type": "api-current-state",
+        "z": "9ed0cc432bf05d11",
+        "name": "充电口是否已打开",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "binary_sensor.tesla_charge_port_door_open",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 530,
+        "y": 320,
+        "wires": [
+            [
+                "ab8e8de833155f43"
+            ]
+        ]
+    },
+    {
+        "id": "6946a4d1691c93ac",
+        "type": "inject",
+        "z": "9ed0cc432bf05d11",
+        "name": "定时任务",
+        "props": [],
+        "repeat": "",
+        "crontab": "03 08 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 280,
+        "y": 600,
+        "wires": [
+            [
+                "ea9a4b42c4cdb99c",
+                "d4687d618aa6d3e3",
+                "b83ccc7b854b382c",
+                "644131c2dd4521c6",
+                "95e9a671872911e7",
+                "2c4f4f5d1dc12dc7",
+                "19551fe866e61047",
+                "505200d2202d9e49",
+                "9e934a19dbf3a9aa",
+                "1b8930e812b3e4cd",
+                "baf5f01042f69f16",
+                "d32063a4facb17e8",
+                "462e436402514c2e",
+                "ab8556d8ceab5762",
+                "37cef8c9b3a2770b",
+                "6d5d458cffa2b0e2",
+                "33e872e8a7d9dcc5"
+            ]
+        ]
+    },
+    {
+        "id": "b906c31c56dac8ef",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"tesla_inside_temp\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 80,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "65ecb0404951c829",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"tesla_outside_temp\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 140,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "43c305d48d111d29",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"tesla_odometer\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 200,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "745d705124733494",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"tesla_usable_battery_level\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 260,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "ab8e8de833155f43",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"tesla_charge_port_door_open\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 320,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "92a5f70edb5a1a0a",
+        "type": "join",
+        "z": "9ed0cc432bf05d11",
+        "name": "合并",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": false,
+        "timeout": "",
+        "count": "17",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 980,
+        "y": 640,
+        "wires": [
+            [
+                "6a07cd12d1d954b1"
+            ]
+        ]
+    },
+    {
+        "id": "66dc311f0d2c71c7",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"tesla_plugged_in\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 380,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "bff9ad589b6e9e8a",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"tesla_windows_open\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 440,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "f6901fd993e94c53",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"tesla_doors_open\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 500,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "32c3a12c9add0c25",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"tesla_trunk_open\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 560,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "d9de7d69c745ae69",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"tesla_frunk_open\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 620,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "6a07cd12d1d954b1",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "生成总结",
+        "func": "// 假设输入对象存储在 msg.payload 中\nconst data = msg.payload;\n\n// 生成 Markdown 内容\nconst markdown = `\n报告大帅，这是特斯拉日报。请关注胎压和里程信息。\n\n## 车辆信息\n- **车内温度**：${data.tesla_inside_temp}度\n- **车外温度**：${data.tesla_outside_temp}度\n- **总里程**：${data.tesla_odometer}KM\n- **可用电量**：${data.tesla_usable_battery_level}%\n- **预计行驶**：${data.tesla_ideal_battery_range}KM\n- **位置**：${data.address}\n\n\n## 胎压\n> 正常范围为2.9-3.1bar\n\n- **前左轮胎**：${data.tesla_tpms_pressure_fl}bar\n- **前右轮胎**：${data.tesla_tpms_pressure_fr}bar\n- **后左轮胎**：${data.tesla_tpms_pressure_rl}bar\n- **后右轮胎**：${data.tesla_tpms_pressure_rr}bar\n\n## 锁状态\n- **充电口**：${data.tesla_charge_port_door_open=='on'?\"开启\":\"关闭\"}\n- **充电枪**：${data.tesla_plugged_in==\"on\"?\"已插入\":\"未插入\"}\n- **车窗**：${data.tesla_windows_open==\"on\"?\"已开启\":\"已关闭\"}\n- **车门**：${data.tesla_doors_open==\"on\"?\"已开启\":\"已关闭\"}\n- **后备箱**：${data.tesla_trunk_open==\"on\"?\"已开启\":\"已关闭\"}\n- **前备箱**：${data.tesla_frunk_open==\"on\"?\"已开启\":\"已关闭\"}\n- **车锁**：${data.tesla_locked==\"on\"?\"未上锁\":\"已上锁\"}\n\n`;\n\n// 将生成的 Markdown 内容赋值给 msg.payload\nmsg.payload = markdown;\n\n// 返回修改后的 msg 对象\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1180,
+        "y": 640,
+        "wires": [
+            [
+                "92ac96508b84bdfe"
+            ]
+        ]
+    },
+    {
+        "id": "92ac96508b84bdfe",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "填充模板",
+        "func": "const wx_msg={\n    \"msgtype\": \"markdown\",\n    \"markdown\":{\"content\":msg.payload},\n}\nmsg.payload=wx_msg\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 640,
+        "wires": [
+            [
+                "bcc3efadbfc2c5d7"
+            ]
+        ]
+    },
+    {
+        "id": "baf5f01042f69f16",
+        "type": "api-current-state",
+        "z": "9ed0cc432bf05d11",
+        "name": "是否已锁定",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "binary_sensor.tesla_locked",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 510,
+        "y": 680,
+        "wires": [
+            [
+                "309edf7abf121bcd"
+            ]
+        ]
+    },
+    {
+        "id": "309edf7abf121bcd",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"tesla_locked\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 680,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "d32063a4facb17e8",
+        "type": "api-current-state",
+        "z": "9ed0cc432bf05d11",
+        "name": "左前胎压",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.tesla_tpms_pressure_fl",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 500,
+        "y": 740,
+        "wires": [
+            [
+                "b3581903e0c361fd"
+            ]
+        ]
+    },
+    {
+        "id": "b3581903e0c361fd",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"tesla_tpms_pressure_fl\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 740,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "462e436402514c2e",
+        "type": "api-current-state",
+        "z": "9ed0cc432bf05d11",
+        "name": "右前胎压",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.tesla_tpms_pressure_fr",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 500,
+        "y": 800,
+        "wires": [
+            [
+                "28d81b7d5eeb8d7d"
+            ]
+        ]
+    },
+    {
+        "id": "28d81b7d5eeb8d7d",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"tesla_tpms_pressure_fr\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 800,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "ab8556d8ceab5762",
+        "type": "api-current-state",
+        "z": "9ed0cc432bf05d11",
+        "name": "右后胎压",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.tesla_tpms_pressure_rr",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 500,
+        "y": 860,
+        "wires": [
+            [
+                "6e2e438c012a548c"
+            ]
+        ]
+    },
+    {
+        "id": "6e2e438c012a548c",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"tesla_tpms_pressure_rr\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 860,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "37cef8c9b3a2770b",
+        "type": "api-current-state",
+        "z": "9ed0cc432bf05d11",
+        "name": "左后胎压",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.tesla_tpms_pressure_rl",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 500,
+        "y": 920,
+        "wires": [
+            [
+                "18bde5320b7fd98c"
+            ]
+        ]
+    },
+    {
+        "id": "18bde5320b7fd98c",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"tesla_tpms_pressure_rl\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 920,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "6d5d458cffa2b0e2",
+        "type": "api-current-state",
+        "z": "9ed0cc432bf05d11",
+        "name": "可行驶里程",
+        "server": "ba5849c6c7752ebe",
+        "version": 3,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "sensor.tesla_ideal_battery_range",
+        "state_type": "str",
+        "blockInputOverrides": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "override_topic": false,
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "x": 510,
+        "y": 980,
+        "wires": [
+            [
+                "9b89b29412867c78"
+            ]
+        ]
+    },
+    {
+        "id": "9b89b29412867c78",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"tesla_ideal_battery_range\"\nmsg.payload = msg.payload\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 980,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "33e872e8a7d9dcc5",
+        "type": "ha-get-entities",
+        "z": "9ed0cc432bf05d11",
+        "name": "汽车位置",
+        "server": "ba5849c6c7752ebe",
+        "version": 1,
+        "rules": [
+            {
+                "condition": "state_object",
+                "property": "entity_id",
+                "logic": "is",
+                "value": "device_tracker.tesla_location",
+                "valueType": "str"
+            }
+        ],
+        "outputType": "array",
+        "outputEmptyResults": false,
+        "outputLocationType": "msg",
+        "outputLocation": "payload",
+        "outputResultsCount": 1,
+        "x": 500,
+        "y": 1040,
+        "wires": [
+            [
+                "9e0c491223e52da5"
+            ]
+        ]
+    },
+    {
+        "id": "1ab004f1aaad9b4c",
+        "type": "amaps-convert",
+        "z": "9ed0cc432bf05d11",
+        "name": "",
+        "amaps": "a1a5e2542d880830",
+        "locations": "payload",
+        "locations_type": "msg",
+        "coordsys": "gps",
+        "coordsys_type": "list",
+        "x": 840,
+        "y": 1040,
+        "wires": [
+            [
+                "d92226b8364d8346",
+                "5508125709424b1c"
+            ]
+        ]
+    },
+    {
+        "id": "9e0c491223e52da5",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "获取经纬度",
+        "func": "const entity = msg.payload[0]\nmsg.payload = `${entity.attributes.longitude},${entity.attributes.latitude}`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 1040,
+        "wires": [
+            [
+                "1ab004f1aaad9b4c"
+            ]
+        ]
+    },
+    {
+        "id": "d92226b8364d8346",
+        "type": "amaps-geocode",
+        "z": "9ed0cc432bf05d11",
+        "name": "",
+        "amaps": "a1a5e2542d880830",
+        "mode": "regeo",
+        "mode_type": "list",
+        "location": "payload",
+        "location_type": "msg",
+        "address": "",
+        "address_type": "str",
+        "city": "",
+        "city_type": "str",
+        "x": 1010,
+        "y": 1040,
+        "wires": [
+            [
+                "a5b8835e5e38f5ac"
+            ]
+        ]
+    },
+    {
+        "id": "a5b8835e5e38f5ac",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "格式化",
+        "func": "msg.topic =\"address\"\nmsg.payload = msg.payload.formatted_address\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1170,
+        "y": 1040,
+        "wires": [
+            [
+                "92a5f70edb5a1a0a"
+            ]
+        ]
+    },
+    {
+        "id": "eaad1ffd5c8b79f8",
+        "type": "amaps-staticmap",
+        "z": "9ed0cc432bf05d11",
+        "name": "",
+        "amaps": "a1a5e2542d880830",
+        "location": "payload",
+        "location_type": "msg",
+        "zoom": "17",
+        "zoom_type": "num",
+        "size": "512*360",
+        "size_type": "str",
+        "markers": "markers",
+        "markers_type": "msg",
+        "labels": "",
+        "labels_type": "str",
+        "paths": "",
+        "paths_type": "str",
+        "scale": "2",
+        "traffic": "0",
+        "x": 1020,
+        "y": 1140,
+        "wires": [
+            [
+                "6f4e84b1fde4976b"
+            ]
+        ]
+    },
+    {
+        "id": "2c5e2129806a201f",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "获取标柱",
+        "func": "msg.markers = `large,,T:${msg.payload}`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 1140,
+        "wires": [
+            [
+                "eaad1ffd5c8b79f8"
+            ]
+        ]
+    },
+    {
+        "id": "6f4e84b1fde4976b",
+        "type": "function",
+        "z": "9ed0cc432bf05d11",
+        "name": "拼接图片数据包",
+        "func": "msg.payload = {\n    \"msgtype\": \"image\",\n    \"image\": {\n        \"base64\": msg.payload.data,\n        \"md5\": msg.payload.md5\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1180,
+        "y": 1140,
+        "wires": [
+            [
+                "a5adae560dda8db9"
+            ]
+        ]
+    },
+    {
+        "id": "a5adae560dda8db9",
+        "type": "subflow:f688cba6a004cf62",
+        "z": "9ed0cc432bf05d11",
+        "name": "",
+        "x": 1380,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "5508125709424b1c",
+        "type": "delay",
+        "z": "9ed0cc432bf05d11",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 680,
+        "y": 1140,
+        "wires": [
+            [
+                "2c5e2129806a201f"
+            ]
+        ]
+    },
+    {
+        "id": "bba46c50c38f8318",
+        "type": "mqtt in",
+        "z": "7933ca710dd957bf",
+        "name": "Person图片",
+        "topic": "frigate/events",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "23a12b1512944eb0",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 230,
+        "y": 160,
+        "wires": [
+            [
+                "8b7045c3b3335e52"
+            ]
+        ]
+    },
+    {
+        "id": "8b7045c3b3335e52",
+        "type": "function",
+        "z": "7933ca710dd957bf",
+        "name": "解包",
+        "func": "if(msg.payload.type!=\"end\"){\n    return\n}\nconst after = msg.payload.after;\nif(after.has_snapshot===false){\n    return\n}\nconst event_id = after.id;\nconst preview_url = `http://192.168.2.100:15000/api/events/${event_id}/preview.gif`\nconst snapshot_url =  `http://192.168.2.100:15000/api/events/${event_id}/snapshot.jpg`\nconst payload = {\n    preview_url,\n    snapshot_url,\n    top_score: after.top_score,\n    start_time: after.start_time,\n    end_time: after.end_time\n}\nmsg.payload = payload;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "b6b356178ab0f078",
+                "70d54aaedb85af5c",
+                "f3a677a9968de8bf",
+                "c1de9b7ed49d32c2",
+                "5c8f068c8c9c2bb9"
+            ]
+        ]
+    },
+    {
+        "id": "fcd9d79bd245eac9",
+        "type": "inject",
+        "z": "7933ca710dd957bf",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"before\":{\"id\":\"1740282238.80487-7sheao\",\"camera\":\"livingroom_camera\",\"frame_time\":1740282259.190713,\"snapshot\":{\"frame_time\":1740282258.18094,\"box\":[218,49,311,187],\"area\":12834,\"region\":[208,0,508,300],\"score\":0.9722627401351929,\"attributes\":[]},\"label\":\"person\",\"sub_label\":null,\"top_score\":0.724479079246521,\"false_positive\":false,\"start_time\":1740282238.80487,\"end_time\":null,\"score\":0.9901524782180786,\"box\":[225,63,318,192],\"area\":11997,\"ratio\":0.7209302325581395,\"region\":[101,0,401,300],\"stationary\":false,\"motionless_count\":3,\"position_changes\":1,\"current_zones\":[],\"entered_zones\":[],\"has_clip\":true,\"has_snapshot\":true,\"attributes\":{},\"current_attributes\":[]},\"after\":{\"id\":\"1740282238.80487-7sheao\",\"camera\":\"livingroom_camera\",\"frame_time\":1740282260.394461,\"snapshot\":{\"frame_time\":1740282260.394461,\"box\":[221,1,326,205],\"area\":21420,\"region\":[209,0,625,416],\"score\":0.7252621054649353,\"attributes\":[]},\"label\":\"person\",\"sub_label\":null,\"top_score\":0.9800636470317841,\"false_positive\":false,\"start_time\":1740282238.80487,\"end_time\":1740282264.204556,\"score\":0.7252621054649353,\"box\":[221,1,326,205],\"area\":21420,\"ratio\":0.5147058823529411,\"region\":[209,0,625,416],\"stationary\":false,\"motionless_count\":1,\"position_changes\":1,\"current_zones\":[],\"entered_zones\":[],\"has_clip\":true,\"has_snapshot\":true,\"attributes\":{},\"current_attributes\":[]},\"type\":\"end\"}",
+        "payloadType": "json",
+        "x": 230,
+        "y": 240,
+        "wires": [
+            [
+                "8b7045c3b3335e52"
+            ]
+        ]
+    },
+    {
+        "id": "b6b356178ab0f078",
+        "type": "function",
+        "z": "7933ca710dd957bf",
+        "name": "获取snapshot",
+        "func": "msg.url=msg.payload.snapshot_url\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 160,
+        "wires": [
+            [
+                "973e8e0a38aa1556"
+            ]
+        ]
+    },
+    {
+        "id": "973e8e0a38aa1556",
+        "type": "http request",
+        "z": "7933ca710dd957bf",
+        "name": "获取buffer",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 810,
+        "y": 160,
+        "wires": [
+            [
+                "12f199626178c63b"
+            ]
+        ]
+    },
+    {
+        "id": "12f199626178c63b",
+        "type": "subflow:a745574bf8e5f18b",
+        "z": "7933ca710dd957bf",
+        "name": "",
+        "x": 1020,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "4b194cd7176eb58a",
+        "type": "function",
+        "z": "7933ca710dd957bf",
+        "name": "转换时间",
+        "func": "const timestamp = msg.payload;\nconst date = new Date(timestamp * 1000);\nconst year = date.getFullYear();\nconst month = String(date.getMonth() + 1).padStart(2, '0');\nconst day = String(date.getDate()).padStart(2, '0');\nconst hours = String(date.getHours()).padStart(2, '0');\nconst minutes = String(date.getMinutes()).padStart(2, '0');\nconst seconds = String(date.getSeconds()).padStart(2, '0');\nconst milliseconds = String(Math.floor((date.getMilliseconds() / 1000) * 1000000)).padStart(6, '0');\nconst formattedTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;\nmsg.payload = formattedTime\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 280,
+        "wires": [
+            [
+                "f0da0f929ee4b7e9"
+            ]
+        ]
+    },
+    {
+        "id": "70d54aaedb85af5c",
+        "type": "function",
+        "z": "7933ca710dd957bf",
+        "name": "获取起始时间",
+        "func": "msg.payload = msg.payload.start_time\nmsg.topic=\"start_time\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 280,
+        "wires": [
+            [
+                "4b194cd7176eb58a"
+            ]
+        ]
+    },
+    {
+        "id": "f3a677a9968de8bf",
+        "type": "function",
+        "z": "7933ca710dd957bf",
+        "name": "获取结束时间",
+        "func": "msg.payload = msg.payload.end_time\nmsg.topic = \"end_time\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 360,
+        "wires": [
+            [
+                "a01230d7a624d8e9"
+            ]
+        ]
+    },
+    {
+        "id": "a01230d7a624d8e9",
+        "type": "function",
+        "z": "7933ca710dd957bf",
+        "name": "转换时间",
+        "func": "const timestamp = msg.payload;\nconst date = new Date(timestamp * 1000);\nconst year = date.getFullYear();\nconst month = String(date.getMonth() + 1).padStart(2, '0');\nconst day = String(date.getDate()).padStart(2, '0');\nconst hours = String(date.getHours()).padStart(2, '0');\nconst minutes = String(date.getMinutes()).padStart(2, '0');\nconst seconds = String(date.getSeconds()).padStart(2, '0');\nconst milliseconds = String(Math.floor((date.getMilliseconds() / 1000) * 1000000)).padStart(6, '0');\nconst formattedTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;\nmsg.payload = formattedTime\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 360,
+        "wires": [
+            [
+                "f0da0f929ee4b7e9"
+            ]
+        ]
+    },
+    {
+        "id": "f0da0f929ee4b7e9",
+        "type": "join",
+        "z": "7933ca710dd957bf",
+        "name": "合并",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": false,
+        "timeout": "",
+        "count": "3",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 970,
+        "y": 320,
+        "wires": [
+            [
+                "3c588bd77baab100"
+            ]
+        ]
+    },
+    {
+        "id": "3c588bd77baab100",
+        "type": "function",
+        "z": "7933ca710dd957bf",
+        "name": "生成总结",
+        "func": "// 假设输入对象存储在 msg.payload 中\nconst data = msg.payload;\n\n// 生成 Markdown 内容\nconst markdown = `\n报告大帅，摄像头检测到事件！\n\n- **起始时间**：${data.start_time}\n- **结束时间**：${data.end_time}\n- **置信度**：${data.top_score.toFixed(4)*100}%\n`;\n\n// 将生成的 Markdown 内容赋值给 msg.payload\nmsg.payload = markdown;\n\n// 返回修改后的 msg 对象\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1120,
+        "y": 320,
+        "wires": [
+            [
+                "c6e233c67f743dc7"
+            ]
+        ]
+    },
+    {
+        "id": "a43b1253d60431df",
+        "type": "subflow:f688cba6a004cf62",
+        "z": "7933ca710dd957bf",
+        "name": "",
+        "x": 1460,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "c6e233c67f743dc7",
+        "type": "function",
+        "z": "7933ca710dd957bf",
+        "name": "填充模板",
+        "func": "const wx_msg={\n    \"msgtype\": \"markdown\",\n    \"markdown\":{\"content\":msg.payload} \n}\nmsg.payload=wx_msg\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1280,
+        "y": 320,
+        "wires": [
+            [
+                "a43b1253d60431df"
+            ]
+        ]
+    },
+    {
+        "id": "c1de9b7ed49d32c2",
+        "type": "function",
+        "z": "7933ca710dd957bf",
+        "name": "获取置信度",
+        "func": "msg.payload = msg.payload.top_score\nmsg.topic = \"top_score\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 420,
+        "wires": [
+            [
+                "f0da0f929ee4b7e9"
+            ]
+        ]
+    },
+    {
+        "id": "5c8f068c8c9c2bb9",
+        "type": "function",
+        "z": "7933ca710dd957bf",
+        "name": "获取preview",
+        "func": "msg.payload = msg.payload.preview_url \nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 520,
+        "wires": [
+            [
+                "3b903b30453679c0"
+            ]
+        ]
+    },
+    {
+        "id": "3b903b30453679c0",
+        "type": "subflow:82f9dbd4ee3be2c7",
+        "z": "7933ca710dd957bf",
+        "name": "",
+        "x": 790,
+        "y": 520,
+        "wires": [
+            [
+                "eff5a432172df4b4"
+            ]
+        ]
+    },
+    {
+        "id": "eff5a432172df4b4",
+        "type": "function",
+        "z": "7933ca710dd957bf",
+        "name": "填充模板",
+        "func": "const wx_msg={\n    \"msgtype\": \"file\",\n    \"file\": {\n \t\t\"media_id\": msg.payload\n    }\n}\nmsg.payload=wx_msg\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 600,
+        "wires": [
+            [
+                "8941fd907dcf7466"
+            ]
+        ]
+    },
+    {
+        "id": "8941fd907dcf7466",
+        "type": "subflow:f688cba6a004cf62",
+        "z": "7933ca710dd957bf",
+        "name": "",
+        "x": 1140,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "502f06fef56a5f79",
+        "type": "git-nodes",
+        "z": "d1b744409d05f8f4",
+        "label": "",
+        "branch": "master",
+        "sourcebranch": "master",
+        "gitadd": "settings.js,package.json,.config.json,lib",
+        "gitrmcache": "nodes/*/x,nodes/*/y,nodes/*/z",
+        "debugging": true,
+        "git": "8205ee9d4179d831",
+        "x": 300,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "63a2d5ccf5f1cfd9",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-home-assistant-websocket": "0.75.0",
+            "@background404/node-red-contrib-python-venv": "0.5.3",
+            "node-red-contrib-amaps": "0.0.1",
+            "node-red-contrib-git-nodes": "0.2.2",
+            "node-red-contrib-md5": "1.0.4",
+            "node-red-node-base64": "0.3.0"
+        }
+    }
+]
