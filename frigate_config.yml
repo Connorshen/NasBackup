@@ -1,0 +1,108 @@
+mqtt:
+  host: 192.168.2.100
+  port: 1883
+  topic_prefix: frigate
+ffmpeg:
+  hwaccel_args:
+    - -hwaccel
+    - vaapi
+    - -hwaccel_device
+    - /dev/dri/renderD128
+    - -hwaccel_output_format
+    - yuv420p
+  input_args: preset-rtsp-generic
+  output_args:
+    record: -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime
+      1 -c:v copy -c:a aac
+model:
+  width: 300
+  height: 300
+  input_tensor: nhwc
+  input_pixel_format: bgr
+  path: /openvino-model/ssdlite_mobilenet_v2.xml
+  labelmap_path: /openvino-model/coco_91cl_bkgr.txt
+detectors:
+  ov:
+    type: openvino
+    device: CPU
+record:
+  enabled: true
+  retain:
+    days: 7
+    mode: all
+  events:
+    retain:
+      default: 30
+      mode: motion
+snapshots:
+  enabled: true
+  retain:
+    default: 30
+motion:
+  enabled: true
+go2rtc:
+  streams:
+    door_camera:
+      - ffmpeg:rtsp://192.168.2.101/live/ch00_1#video=h264#hardware=vaapi
+    livingroom_camera:
+      - ffmpeg:rtsp://192.168.2.102/live/ch00_1#video=h264#hardware=vaapi
+    fish_camera:
+      - ffmpeg:rtsp://admin:shen19951113@192.168.2.103:554/stream2#video=h264#hardware=vaapi
+  webrtc:
+    candidates:
+      - 192.168.2.100:8555
+      - stun:8555
+cameras:
+  door_camera:
+    enabled: true
+    ffmpeg:
+      inputs:
+        - path: rtsp://192.168.2.100:8554/door_camera
+          roles:
+            - detect
+            - record
+    detect:
+      enabled: true
+      width: 1280
+      height: 720
+      fps: 5
+    record:
+      enabled: true
+    motion:
+      enabled: true
+      mask:
+        - 0.215,0,0.253,1,0,1,0,0
+        - 0.676,0.468,0.662,0.845,0.659,1,1,1,1,0,1,0.421,0.791,0.447
+      threshold: 80
+      contour_area: 100
+      improve_contrast: true
+  livingroom_camera:
+    enabled: true
+    ffmpeg:
+      inputs:
+        - path: rtsp://192.168.2.100:8554/livingroom_camera
+          roles:
+            - record
+    detect:
+      enabled: false
+      width: 640
+      height: 360
+      fps: 5
+    record:
+      enabled: true
+    motion:
+      enabled: false
+  fish_camera:
+    enabled: true
+    ffmpeg:
+      inputs:
+        - path: rtsp://192.168.2.100:8554/fish_camera
+          roles:
+            - record
+    detect:
+      enabled: false
+    record:
+      enabled: false
+    motion:
+      enabled: false
+version: 0.14
